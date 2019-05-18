@@ -93,7 +93,8 @@ body {
     left: 50%;
 
     /* Translate is in relation to the element, not header, the parent */
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .heading-primary {
@@ -105,6 +106,7 @@ body {
         Determine if back part of an element is visible or hidden when transformed.
     */
     backface-visibility: hidden;
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -189,4 +191,57 @@ body {
         opacity: 1;
         transform: translate(0);
     }
+}
+
+/*
+    Pseudo classes are special states of a selector.
+    They're used to style elements under a special condition.
+    :link is a state of the btn selector.
+*/
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+
+    /* Padding shorthand, top & bottom, left & right. */
+    /* Padding long form, top, right, bottom, left. */
+    padding: 15px 40px;
+
+    /* Need a block element for padding, height, width. */
+    /* 
+        inline-block elements treated as if they are text.
+        To center, set parent elements text-align property to center.
+    */
+    display: inline-block;
+    border-radius: 100px;
+
+    /*
+        Shorthand version of transition.
+        The transition property have to be on the initial state.
+        :hover and :active state transforms will be animated in relation to the element's initial state.
+    */
+    transition: all .2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+
+    /* X, Y, blur, color. */
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+/* When clicked. */
+.btn:active {
+    transform: translateY(-1px);
+
+    /*
+        X, Y, blur, color.
+        Reduce the shadow and blur to give the effect of being closer to the page.
+    */
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.btn-white {
+   background-color: #fff; 
+   color: #777;
 }

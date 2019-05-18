@@ -99,6 +99,12 @@ body {
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+
+    /*
+        Fix for shake at end of an animation.
+        Determine if back part of an element is visible or hidden when transformed.
+    */
+    backface-visibility: hidden;
 }
 
 .heading-primary-main {
@@ -110,6 +116,25 @@ body {
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    /* 
+        Delay an animations start time with:
+        animation-delay: 3s;
+
+        Set number of iterations with:
+        animation-iteration-count: 3;
+
+        Set how an animation should progress over the duration of each cycle:
+        animation-timing-function: ease-out;
+
+        Important timing functions:
+        ease-out:   start fast then go slow
+        ease-in:    start slow then go fast
+    */
 }
 
 .heading-primary-sub {
@@ -117,6 +142,51 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+
+    /* Animation shorthand. */
+    animation: moveInRight 1s ease-out;
 }
 
+/*
+    For browser performance only animate a maximum of 2 properties.
+    Browsers are optimized for opacity and transform.
+*/
+@keyframes moveInLeft {
+    /* Before animation starts, initial state - start. */
+    0% {
+        opacity: 0; 
+        transform: translateX(-100px)
+    }
 
+    /* Header will animate 20px further than its initial position on the X axis. */
+    80% {
+        transform: translateX(10px)
+    }
+
+    /* Finish. */
+    100% {
+        opacity: 1;         
+
+        /*
+            Use translate(0) to render element how it'd normally look.
+            In this case the header snaps back from the 10px offset at 80%.
+        */
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0; 
+        transform: translateX(100px)
+    }
+
+    80% {
+        transform: translateX(-10px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}

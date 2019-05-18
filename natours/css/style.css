@@ -157,12 +157,12 @@ body {
     /* Before animation starts, initial state - start. */
     0% {
         opacity: 0; 
-        transform: translateX(-100px)
+        transform: translateX(-100px);
     }
 
     /* Header will animate 20px further than its initial position on the X axis. */
     80% {
-        transform: translateX(10px)
+        transform: translateX(10px);
     }
 
     /* Finish. */
@@ -180,11 +180,23 @@ body {
 @keyframes moveInRight {
     0% {
         opacity: 0; 
-        transform: translateX(100px)
+        transform: translateX(100px);
     }
 
     80% {
-        transform: translateX(-10px)
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0; 
+        transform: translateY(30px);
     }
 
     100% {
@@ -200,6 +212,7 @@ body {
 */
 .btn:link,
 .btn:visited {
+    position: relative;
     text-transform: uppercase;
     text-decoration: none;
 
@@ -244,4 +257,42 @@ body {
 .btn-white {
    background-color: #fff; 
    color: #777;
+}
+
+/*
+    :after pseudo element adds a virtual element right after element which can be styled.
+    The :after pseudo element will be treated like a child of btn.
+*/
+.btn::after {
+    /*
+        after pseudo element always needs the content and display properties set to appear on the page.
+    */
+    content: "";
+    display: inline-block;
+    height: 100%;           /* 100% height of btn. */
+    width: 100%;            /* 100% width of btn. */
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+/* :after pseudo element of btn hover state. */
+.btn:hover::after {
+   transform: scaleX(1.4) scaleY(1.6);
+   opacity: 0;
+}
+
+.btn-animated {
+    /* animation name, duration, timing function, delay. */
+    animation: moveInBottom .5s ease-out .75s;
+
+    /* Apply the styles of the 0% frame before the animation starts. */
+    animation-fill-mode: backwards;
 }

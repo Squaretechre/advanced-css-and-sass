@@ -1,0 +1,122 @@
+/*
+    COLORS:
+
+    Light green: #7ed56f
+    Medium green: #55c57a
+    Dark green: #28b485
+*/
+
+/*
+    Normalize.css not really neccessary anymore for cross browser reset.
+    Prefer simple reset using universal selector.
+*/
+
+/*
+    Remove default margin and padding applied by browsers.
+*/
+* {
+    margin: 0;
+    padding: 0;
+
+    /* Change box model so border and padding no longer added to total width/height for a box. */
+    box-sizing: border-box;
+}
+
+body {
+    /* 
+        Set font related properties in body as they are usually inherited.
+        Font properties will be inherited by all child elements of the body.
+        Better practice than putting these properties in the universal selector. 
+    */
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    
+    /* Line height is 1.7x bigger than predefined line height without. */
+    line-height: 1.7;
+    color: #777;
+
+    /* Padding is not inherited. */
+    padding: 30px;
+}
+
+.header {
+    /* 95% of viewport height. */
+    height: 95vh;
+
+    /*
+        Always use background-image property to specify gradients.
+        Want gradient to stay on top so must be first image specified.
+        Create effect by layering background images.
+        Can also specify a direction with linear-gradient.
+    */
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba(126, 213, 111, 0.8), 
+        rgba(40, 180, 131, 0.8)),
+        url(../img/hero.jpg
+    );
+    background-size: cover;
+
+    /*
+        Ensure top of image stays at the top of the container. 
+        Bottom of the image will crop but top stays the same.
+            - bottom
+            - center
+    */
+    background-position: top;
+
+    /*
+        Specify a polygon through which the image will still be visible.
+        The polygon function takes coordinates (X, Y) or path to clip.
+    */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    position: relative;
+}
+
+.logo-box {
+    /* Absolute positioned elements will be positioned relative to their parent element with position set to relative. */
+    position: absolute;    
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    /* Width will scale according to height. */
+    height: 35px;    
+}
+
+.text-box {
+    /* Absolute position relative to .header */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+
+    /* Translate is in relation to the element, not header, the parent */
+    transform: translate(-50%, -50%)
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    /* 
+        Block elements occupy full width they have available.
+        Block elements create line breaks after and before them.
+    */
+    display: block; 
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+}
+
+

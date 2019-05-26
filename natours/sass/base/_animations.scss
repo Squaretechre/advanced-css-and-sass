@@ -1,0 +1,55 @@
+/*
+    For browser performance only animate a maximum of 2 properties.
+    Browsers are optimized for opacity and transform.
+*/
+@keyframes moveInLeft {
+    /* Before animation starts, initial state - start. */
+    0% {
+        opacity: 0; 
+        transform: translateX(-10rem);
+    }
+
+    /* Header will animate 20px further than its initial position on the X axis. */
+    80% {
+        transform: translateX(1rem);
+    }
+
+    /* Finish. */
+    100% {
+        opacity: 1;         
+
+        /*
+            Use translate(0) to render element how it'd normally look.
+            In this case the header snaps back from the 10px offset at 80%.
+        */
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0; 
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0; 
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}

@@ -1,0 +1,95 @@
+.btn {
+    /*
+        Pseudo classes are special states of a selector.
+        They're used to style elements under a special condition.
+        :link is a state of the btn selector.
+    */
+    &:link,
+    &:visited {
+        position: relative;
+        text-transform: uppercase;
+        text-decoration: none;
+
+        /* Padding shorthand, top & bottom, left & right. */
+        /* Padding long form, top, right, bottom, left. */
+        padding: 1.5rem 4rem;
+
+        /* Need a block element for padding, height, width. */
+        /* 
+            inline-block elements treated as if they are text.
+            To center, set parent elements text-align property to center.
+        */
+        display: inline-block;
+        border-radius: 10rem;
+
+        /*
+            Shorthand version of transition.
+            The transition property have to be on the initial state.
+            :hover and :active state transforms will be animated in relation to the element's initial state.
+        */
+        transition: all .2s;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem);
+
+        /* X, Y, blur, color. */
+        box-shadow: 0 10px 20px rgba($color-black,.2);
+
+        /* :after pseudo element of btn hover state. */
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    /* When clicked. */
+    &:active {
+        transform: translateY(-.1rem);
+
+        /*
+            X, Y, blur, color.
+            Reduce the shadow and blur to give the effect of being closer to the page.
+        */
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    }
+
+    
+    /*
+    :after pseudo element adds a virtual element right after element which can be styled.
+    The :after pseudo element will be treated like a child of btn.
+    */
+    &::after {
+        /*
+        after pseudo element always needs the content and display properties set to appear on the page.
+        */
+        content: "";
+        display: inline-block;
+        height: 100%;           /* 100% height of btn. */
+        width: 100%;            /* 100% width of btn. */
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--white {
+        background-color: $color-white; 
+        color: #777;
+    
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--animated {
+        /* animation name, duration, timing function, delay. */
+        animation: moveInBottom .5s ease-out .75s;
+
+        /* Apply the styles of the 0% frame before the animation starts. */
+        animation-fill-mode: backwards;
+    }
+}

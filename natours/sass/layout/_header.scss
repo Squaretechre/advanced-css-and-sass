@@ -1,0 +1,56 @@
+.header {
+    /* 95% of viewport height. */
+    height: 95vh;
+
+    /*
+        Always use background-image property to specify gradients.
+        Want gradient to stay on top so must be first image specified.
+        Create effect by layering background images.
+        Can also specify a direction with linear-gradient.
+    */
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)),
+        url(../img/hero.jpg
+    );
+    background-size: cover;
+
+    /*
+        Ensure top of image stays at the top of the container. 
+        Bottom of the image will crop but top stays the same.
+            - bottom
+            - center
+    */
+    background-position: top;
+
+    /*
+        Specify a polygon through which the image will still be visible.
+        The polygon function takes coordinates (X, Y) or path to clip.
+    */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    position: relative;
+
+    &__logo-box {
+        /* Absolute positioned elements will be positioned relative to their parent element with position set to relative. */
+        position: absolute;    
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        /* Width will scale according to height. */
+        height: 3.5rem;    
+    }
+
+    &__text-box {
+        /* Absolute position relative to .header */
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        
+        /* Translate is in relation to the element, not header, the parent */
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}

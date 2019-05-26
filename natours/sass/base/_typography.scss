@@ -1,0 +1,68 @@
+body {
+    /* 
+        Set font related properties in body as they are usually inherited.
+        Font properties will be inherited by all child elements of the body.
+        Better practice than putting these properties in the universal selector. 
+    */
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    
+    /* Line height is 1.7x bigger than predefined line height without. */
+    line-height: 1.7;
+    color: #777;
+
+    /* Padding is not inherited. */
+    padding: 3rem;
+}
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+
+    /*
+        Fix for shake at end of an animation.
+        Determine if back part of an element is visible or hidden when transformed.
+    */
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+
+    &--main {
+        /* 
+            Block elements occupy full width they have available.
+            Block elements create line breaks after and before them.
+        */
+        display: block; 
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        
+        /* 
+            Delay an animations start time with:
+            animation-delay: 3s;
+        
+            Set number of iterations with:
+            animation-iteration-count: 3;
+        
+            Set how an animation should progress over the duration of each cycle:
+            animation-timing-function: ease-out;
+        
+            Important timing functions:
+            ease-out:   start fast then go slow
+            ease-in:    start slow then go fast
+        */
+    }
+
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.7rem;
+        
+        /* Animation shorthand. */
+        animation: moveInRight 1s ease-out;
+    }
+}

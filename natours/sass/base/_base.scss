@@ -1,0 +1,59 @@
+/*
+    Normalize.css not really neccessary anymore for cross browser reset.
+    Prefer simple reset using universal selector.
+*/
+
+/*
+    Remove default margin and padding applied by browsers.
+    Also specify pseudo elements as the universal selector does not cover 
+    these by default.
+*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+
+    /* 
+        box-sizing is not automatically set to inherit.
+        Use the universal selector to override its default behaviour and
+        then set box-sizing: border-box on the body selector so that all
+        children of body inherit it also.
+    */
+    box-sizing: inherit;
+}
+
+/* Root font-size is set in the html selector. */
+html {
+    /* 
+        1 rem = root font size.
+        10px easier to divide existing px values by in order to convert to rem.
+        Note: rems not supported < IE9.
+
+        Use 10px to make our lives easier: 
+        1 rem = 10 px 
+
+    */
+
+    /*
+        Accessibility:
+        Setting a font-size at the root is bad practice as it overrides
+        any default font size the user may have configured.
+
+        Use a percentage which will work out as a percentage of the font size
+        provided by the browser, usually defaulted to 16px.
+
+        font-size: 100%     = 16px
+        font-size: 62.5%    = 10px (10/16 = 0.625)
+    */
+    font-size: 62.5%;
+}
+
+body {
+    /* 
+        Change box model so border and padding no longer added to total width/height for a box. 
+        Height / width will be defined for the entire box, including padding / border not just the content area.
+        Paddings / borders will reduce inner-width of the content area instead of adding them to the total height / width/.
+    */
+    box-sizing: border-box;
+}

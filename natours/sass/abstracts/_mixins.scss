@@ -1,0 +1,12 @@
+/*
+    Clearfix appends a pseudo element after the element which then
+    clears the floats.
+*/
+@mixin clearfix {
+    /* Pseudo elements always need content defined or they won't appear. */
+    &::after {
+        content: "";        
+        display: table;
+        clear: both;
+    }    
+}

@@ -1,4 +1,8 @@
 /*
+    Clearfix appends a pseudo element after the element which then
+    clears the floats.
+*/
+/*
     For browser performance only animate a maximum of 2 properties.
     Browsers are optimized for opacity and transform.
 */
@@ -221,6 +225,56 @@ body {
     animation: moveInBottom .5s ease-out .75s;
     /* Apply the styles of the 0% frame before the animation starts. */
     animation-fill-mode: backwards; }
+
+/*
+    Row will have a height of 0 because all child elements are floated.
+    Use clearfix to sort this.
+*/
+.row {
+  /*
+        Standard to use grid with max-width of 1140px.
+        If we have enough available space then use max-width specified.
+        If not, the view port < 1140px, then fill 100% of space that it has.
+    */
+  max-width: 114rem;
+  background-color: #eee;
+  /*
+        Center a block element inside of another block element.
+        CSS calculates same left & right margin when set to auto.
+    */
+  margin: 0 auto;
+  /* Select everything except for the last child. */
+  /* Pseudo elements always need content defined or they won't appear. */
+  /*
+        Select all where class attribute starts with "col-".
+        ^   = starts with.
+        $   = ends with.
+        *   = contains.
+    */ }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    /* Have to wrap Sass variables in ${} inside of calc. */
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - (6rem) * 2) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - (6rem) * 3) / 4); }
+  .row .col-2-of-4 {
+    width: calc( 2 * ((100% - (6rem) * 3) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc( 3 * ((100% - (6rem) * 3) / 4) + (2 * 6rem)); }
 
 .header {
   /* 95% of viewport height. */

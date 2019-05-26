@@ -58,7 +58,6 @@ body {
     */
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  /* font-size: 16px; */
   /* Line height is 1.7x bigger than predefined line height without. */
   line-height: 1.7;
   color: #777;
@@ -89,25 +88,22 @@ body {
     */
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   position: relative; }
-
-.header__logo-box {
-  /* Absolute positioned elements will be positioned relative to their parent element with position set to relative. */
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  /* Width will scale according to height. */
-  height: 3.5rem; }
-
-.header__text-box {
-  /* Absolute position relative to .header */
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  /* Translate is in relation to the element, not header, the parent */
-  transform: translate(-50%, -50%);
-  text-align: center; }
+  .header__logo-box {
+    /* Absolute positioned elements will be positioned relative to their parent element with position set to relative. */
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    /* Width will scale according to height. */
+    height: 3.5rem; }
+  .header__text-box {
+    /* Absolute position relative to .header */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* Translate is in relation to the element, not header, the parent */
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
 .heading-primary {
   color: #fff;
@@ -118,41 +114,39 @@ body {
     */
   backface-visibility: hidden;
   margin-bottom: 6rem; }
-
-.heading-primary--main {
-  /* 
-        Block elements occupy full width they have available.
-        Block elements create line breaks after and before them.
-    */
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /* 
-        Delay an animations start time with:
-        animation-delay: 3s;
-
-        Set number of iterations with:
-        animation-iteration-count: 3;
-
-        Set how an animation should progress over the duration of each cycle:
-        animation-timing-function: ease-out;
-
-        Important timing functions:
-        ease-out:   start fast then go slow
-        ease-in:    start slow then go fast
-    */ }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.7rem;
-  /* Animation shorthand. */
-  animation: moveInRight 1s ease-out; }
+  .heading-primary--main {
+    /* 
+            Block elements occupy full width they have available.
+            Block elements create line breaks after and before them.
+        */
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* 
+            Delay an animations start time with:
+            animation-delay: 3s;
+        
+            Set number of iterations with:
+            animation-iteration-count: 3;
+        
+            Set how an animation should progress over the duration of each cycle:
+            animation-timing-function: ease-out;
+        
+            Important timing functions:
+            ease-out:   start fast then go slow
+            ease-in:    start slow then go fast
+        */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    /* Animation shorthand. */
+    animation: moveInRight 1s ease-out; }
 
 /*
     For browser performance only animate a maximum of 2 properties.
@@ -193,83 +187,76 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
-/*
-    Pseudo classes are special states of a selector.
-    They're used to style elements under a special condition.
-    :link is a state of the btn selector.
-*/
-.btn:link,
-.btn:visited {
-  position: relative;
-  text-transform: uppercase;
-  text-decoration: none;
-  /* Padding shorthand, top & bottom, left & right. */
-  /* Padding long form, top, right, bottom, left. */
-  padding: 1.5rem 4rem;
-  /* Need a block element for padding, height, width. */
-  /* 
-        inline-block elements treated as if they are text.
-        To center, set parent elements text-align property to center.
-    */
-  display: inline-block;
-  border-radius: 10rem;
+.btn {
   /*
-        Shorthand version of transition.
-        The transition property have to be on the initial state.
-        :hover and :active state transforms will be animated in relation to the element's initial state.
+        Pseudo classes are special states of a selector.
+        They're used to style elements under a special condition.
+        :link is a state of the btn selector.
     */
-  transition: all .2s;
-  font-size: 1.6rem; }
-
-.btn:hover {
-  transform: translateY(-0.3rem);
-  /* X, Y, blur, color. */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-
-/* When clicked. */
-.btn:active {
-  transform: translateY(-0.1rem);
+  /* When clicked. */
   /*
-        X, Y, blur, color.
-        Reduce the shadow and blur to give the effect of being closer to the page.
-    */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-/*
     :after pseudo element adds a virtual element right after element which can be styled.
     The :after pseudo element will be treated like a child of btn.
-*/
-.btn::after {
-  /*
+    */ }
+  .btn:link, .btn:visited {
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    /* Padding shorthand, top & bottom, left & right. */
+    /* Padding long form, top, right, bottom, left. */
+    padding: 1.5rem 4rem;
+    /* Need a block element for padding, height, width. */
+    /* 
+            inline-block elements treated as if they are text.
+            To center, set parent elements text-align property to center.
+        */
+    display: inline-block;
+    border-radius: 10rem;
+    /*
+            Shorthand version of transition.
+            The transition property have to be on the initial state.
+            :hover and :active state transforms will be animated in relation to the element's initial state.
+        */
+    transition: all .2s;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /* X, Y, blur, color. */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* :after pseudo element of btn hover state. */ }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    /*
+            X, Y, blur, color.
+            Reduce the shadow and blur to give the effect of being closer to the page.
+        */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn::after {
+    /*
         after pseudo element always needs the content and display properties set to appear on the page.
-    */
-  content: "";
-  display: inline-block;
-  height: 100%;
-  /* 100% height of btn. */
-  width: 100%;
-  /* 100% width of btn. */
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-/* :after pseudo element of btn hover state. */
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
-
-.btn--animated {
-  /* animation name, duration, timing function, delay. */
-  animation: moveInBottom .5s ease-out .75s;
-  /* Apply the styles of the 0% frame before the animation starts. */
-  animation-fill-mode: backwards; }
+        */
+    content: "";
+    display: inline-block;
+    height: 100%;
+    /* 100% height of btn. */
+    width: 100%;
+    /* 100% width of btn. */
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn--animated {
+    /* animation name, duration, timing function, delay. */
+    animation: moveInBottom .5s ease-out .75s;
+    /* Apply the styles of the 0% frame before the animation starts. */
+    animation-fill-mode: backwards; }

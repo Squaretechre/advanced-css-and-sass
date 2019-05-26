@@ -1,16 +1,7 @@
 /*
-    COLORS:
-
-    Light green: #7ed56f
-    Medium green: #55c57a
-    Dark green: #28b485
-*/
-
-/*
     Normalize.css not really neccessary anymore for cross browser reset.
     Prefer simple reset using universal selector.
 */
-
 /*
     Remove default margin and padding applied by browsers.
     Also specify pseudo elements as the universal selector does not cover 
@@ -19,21 +10,19 @@
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-
-    /* 
+  margin: 0;
+  padding: 0;
+  /* 
         box-sizing is not automatically set to inherit.
         Use the universal selector to override its default behaviour and
         then set box-sizing: border-box on the body selector so that all
         children of body inherit it also.
     */
-    box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 /* Root font-size is set in the html selector. */
 html {
-    /* 
+  /* 
         1 rem = root font size.
         10px easier to divide existing px values by in order to convert to rem.
         Note: rems not supported < IE9.
@@ -42,8 +31,7 @@ html {
         1 rem = 10 px 
 
     */
-
-    /*
+  /*
         Accessibility:
         Setting a font-size at the root is bad practice as it overrides
         any default font size the user may have configured.
@@ -54,118 +42,96 @@ html {
         font-size: 100%     = 16px
         font-size: 62.5%    = 10px (10/16 = 0.625)
     */
-    font-size: 10px;
-}
+  font-size: 10px; }
 
 body {
-    /* 
+  /* 
         Change box model so border and padding no longer added to total width/height for a box. 
         Height / width will be defined for the entire box, including padding / border not just the content area.
         Paddings / borders will reduce inner-width of the content area instead of adding them to the total height / width/.
     */
-    box-sizing: border-box;
-
-    /* 
+  box-sizing: border-box;
+  /* 
         Set font related properties in body as they are usually inherited.
         Font properties will be inherited by all child elements of the body.
         Better practice than putting these properties in the universal selector. 
     */
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    /* font-size: 16px; */
-    
-    /* Line height is 1.7x bigger than predefined line height without. */
-    line-height: 1.7;
-    color: #777;
-
-    /* Padding is not inherited. */
-    padding: 3rem;
-}
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  /* Line height is 1.7x bigger than predefined line height without. */
+  line-height: 1.7;
+  color: #777;
+  /* Padding is not inherited. */
+  padding: 3rem; }
 
 .header {
-    /* 95% of viewport height. */
-    height: 95vh;
-
-    /*
+  /* 95% of viewport height. */
+  height: 95vh;
+  /*
         Always use background-image property to specify gradients.
         Want gradient to stay on top so must be first image specified.
         Create effect by layering background images.
         Can also specify a direction with linear-gradient.
     */
-    background-image: linear-gradient(
-        to right bottom, 
-        rgba(126, 213, 111, 0.8), 
-        rgba(40, 180, 131, 0.8)),
-        url(../img/hero.jpg
-    );
-    background-size: cover;
-
-    /*
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  /*
         Ensure top of image stays at the top of the container. 
         Bottom of the image will crop but top stays the same.
             - bottom
             - center
     */
-    background-position: top;
-
-    /*
+  background-position: top;
+  /*
         Specify a polygon through which the image will still be visible.
         The polygon function takes coordinates (X, Y) or path to clip.
     */
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-    position: relative;
-}
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  position: relative; }
 
 .header__logo-box {
-    /* Absolute positioned elements will be positioned relative to their parent element with position set to relative. */
-    position: absolute;    
-    top: 4rem;
-    left: 4rem;
-}
+  /* Absolute positioned elements will be positioned relative to their parent element with position set to relative. */
+  position: absolute;
+  top: 4rem;
+  left: 4rem; }
 
 .header__logo {
-    /* Width will scale according to height. */
-    height: 3.5rem;    
-}
+  /* Width will scale according to height. */
+  height: 3.5rem; }
 
 .header__text-box {
-    /* Absolute position relative to .header */
-    position: absolute;
-    top: 40%;
-    left: 50%;
-
-    /* Translate is in relation to the element, not header, the parent */
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
+  /* Absolute position relative to .header */
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  /* Translate is in relation to the element, not header, the parent */
+  transform: translate(-50%, -50%);
+  text-align: center; }
 
 .heading-primary {
-    color: #fff;
-    text-transform: uppercase;
-
-    /*
+  color: #fff;
+  text-transform: uppercase;
+  /*
         Fix for shake at end of an animation.
         Determine if back part of an element is visible or hidden when transformed.
     */
-    backface-visibility: hidden;
-    margin-bottom: 6rem;
-}
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
 
 .heading-primary--main {
-    /* 
+  /* 
         Block elements occupy full width they have available.
         Block elements create line breaks after and before them.
     */
-    display: block; 
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-
-    /* 
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /* 
         Delay an animations start time with:
         animation-delay: 3s;
 
@@ -178,74 +144,54 @@ body {
         Important timing functions:
         ease-out:   start fast then go slow
         ease-in:    start slow then go fast
-    */
-}
+    */ }
 
 .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.7rem;
-
-    /* Animation shorthand. */
-    animation: moveInRight 1s ease-out;
-}
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.7rem;
+  /* Animation shorthand. */
+  animation: moveInRight 1s ease-out; }
 
 /*
     For browser performance only animate a maximum of 2 properties.
     Browsers are optimized for opacity and transform.
 */
 @keyframes moveInLeft {
-    /* Before animation starts, initial state - start. */
-    0% {
-        opacity: 0; 
-        transform: translateX(-10rem);
-    }
-
-    /* Header will animate 20px further than its initial position on the X axis. */
-    80% {
-        transform: translateX(1rem);
-    }
-
-    /* Finish. */
-    100% {
-        opacity: 1;         
-
-        /*
+  /* Before animation starts, initial state - start. */
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  /* Header will animate 20px further than its initial position on the X axis. */
+  80% {
+    transform: translateX(1rem); }
+  /* Finish. */
+  100% {
+    opacity: 1;
+    /*
             Use translate(0) to render element how it'd normally look.
             In this case the header snaps back from the 10px offset at 80%.
         */
-        transform: translate(0);
-    }
-}
+    transform: translate(0); } }
 
 @keyframes moveInRight {
-    0% {
-        opacity: 0; 
-        transform: translateX(10rem);
-    }
-
-    80% {
-        transform: translateX(-1rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 @keyframes moveInBottom {
-    0% {
-        opacity: 0; 
-        transform: translateY(3rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 /*
     Pseudo classes are special states of a selector.
@@ -254,88 +200,76 @@ body {
 */
 .btn:link,
 .btn:visited {
-    position: relative;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    /* Padding shorthand, top & bottom, left & right. */
-    /* Padding long form, top, right, bottom, left. */
-    padding: 1.5rem 4rem;
-
-    /* Need a block element for padding, height, width. */
-    /* 
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  /* Padding shorthand, top & bottom, left & right. */
+  /* Padding long form, top, right, bottom, left. */
+  padding: 1.5rem 4rem;
+  /* Need a block element for padding, height, width. */
+  /* 
         inline-block elements treated as if they are text.
         To center, set parent elements text-align property to center.
     */
-    display: inline-block;
-    border-radius: 10rem;
-
-    /*
+  display: inline-block;
+  border-radius: 10rem;
+  /*
         Shorthand version of transition.
         The transition property have to be on the initial state.
         :hover and :active state transforms will be animated in relation to the element's initial state.
     */
-    transition: all .2s;
-    font-size: 1.6rem;
-}
+  transition: all .2s;
+  font-size: 1.6rem; }
 
 .btn:hover {
-    transform: translateY(-.3rem);
-
-    /* X, Y, blur, color. */
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);
-}
+  transform: translateY(-0.3rem);
+  /* X, Y, blur, color. */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
 
 /* When clicked. */
 .btn:active {
-    transform: translateY(-.1rem);
-
-    /*
+  transform: translateY(-0.1rem);
+  /*
         X, Y, blur, color.
         Reduce the shadow and blur to give the effect of being closer to the page.
     */
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
-}
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn--white {
-   background-color: #fff; 
-   color: #777;
-}
+  background-color: #fff;
+  color: #777; }
 
 /*
     :after pseudo element adds a virtual element right after element which can be styled.
     The :after pseudo element will be treated like a child of btn.
 */
 .btn::after {
-    /*
+  /*
         after pseudo element always needs the content and display properties set to appear on the page.
     */
-    content: "";
-    display: inline-block;
-    height: 100%;           /* 100% height of btn. */
-    width: 100%;            /* 100% width of btn. */
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
+  content: "";
+  display: inline-block;
+  height: 100%;
+  /* 100% height of btn. */
+  width: 100%;
+  /* 100% width of btn. */
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
 
 .btn--white::after {
-    background-color: #fff;
-}
+  background-color: #fff; }
 
 /* :after pseudo element of btn hover state. */
 .btn:hover::after {
-   transform: scaleX(1.4) scaleY(1.6);
-   opacity: 0;
-}
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; }
 
 .btn--animated {
-    /* animation name, duration, timing function, delay. */
-    animation: moveInBottom .5s ease-out .75s;
-
-    /* Apply the styles of the 0% frame before the animation starts. */
-    animation-fill-mode: backwards;
-}
+  /* animation name, duration, timing function, delay. */
+  animation: moveInBottom .5s ease-out .75s;
+  /* Apply the styles of the 0% frame before the animation starts. */
+  animation-fill-mode: backwards; }

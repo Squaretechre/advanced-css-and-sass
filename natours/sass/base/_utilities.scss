@@ -9,7 +9,19 @@
 /*
    Using utility classes for margins helps keep components reusable.
    Adding margins to component styles influences their usage in other contexts. 
+   Better to name utility classes so that they're free from implementation details,
+   i.e u-margin-bottom-8 becomes u-margin-bottom-big, so that they 8px isn't hardcoded in the name.
+   This also provides flexibility if the margin needs to change,
+   i.e if the 8px margin bottom needed to become 7px, would we rename to u-margin-bottom-7?
 */
-.u-margin-bottom-8 {
+.u-margin-bottom-small {
+    margin-bottom: 1.5rem;    
+}
+
+.u-margin-bottom-medium {
+    margin-bottom: 4rem;    
+}
+
+.u-margin-bottom-big {
     margin-bottom: 8rem;    
 }

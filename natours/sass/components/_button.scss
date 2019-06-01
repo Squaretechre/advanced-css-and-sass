@@ -28,7 +28,7 @@
             :hover and :active state transforms will be animated in relation to the element's initial state.
         */
         transition: all .2s;
-        font-size: 1.6rem;
+        font-size: $default-font-size;
     }
 
     &:hover {
@@ -91,5 +91,36 @@
 
         /* Apply the styles of the 0% frame before the animation starts. */
         animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+
+        /*
+            Can use pixel values here as 1px & 3px are small enough values as to not
+            be significantly affected if the user changes the base font-size.
+            For 1px to become 2px the user would have to scale up to a base font-size of 32px.
+        */
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 2rem rgba($color-black, .15);
+        transform: translateY(0);
     }
 }

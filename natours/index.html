@@ -40,6 +40,10 @@
         Emmet:
         .test                   = <div class="test"></div>
         section.section-about   = <section class="section-about"></section> 
+        lorem                   = generates lorem ipsum
+
+        Notes:
+        - Tabbing after element generated cycles through attributes
     -->
     <!-- Tell search engines and screen readers this is the main part of the site -->
     <main>
@@ -49,14 +53,27 @@
                Utility classes are simple classes that have 1 goal.
                Handy for parent elements that only serve to house a child such a text.
             -->
-           <div class="u-center-text u-margin-bottom-8">
+           <div class="u-center-text u-margin-bottom-big">
                <h2 class="heading-secondary">
                    Exciting tours for adventurous people
                </h2>
            </div>
            <div class="row">
                 <div class="col-1-of-2">
-                    Text content
+                    <h3 class="heading-tertiary u-margin-bottom-small">You're going to fall in love with nature</h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo repudiandae iusto unde maiores enim asperiores dolore eaque aliquam officiis quae laboriosam vitae, quasi, pariatur accusantium necessitatibus eos a consectetur odit.
+                    </p>
+                    <h3 class="heading-tertiary u-margin-bottom-small">Live adventures like you never have before</h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, maiores architecto. Aspernatur blanditiis necessitatibus provident aliquid.
+                    </p>
+
+                    <!-- 
+                        Use HTML entity for the arrow.
+                        An alternative to using an icon font.
+                    -->
+                    <a href="#" class="btn-text">Learn more &rarr;</a>
                 </div>
                 <div class="col-1-of-2">
                     Image composition

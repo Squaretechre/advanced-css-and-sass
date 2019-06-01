@@ -168,6 +168,20 @@ body {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
 
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+/* 
+    Makes sense to add margin-bottom directly to paragraph as multiple are usually used together one after the other.
+    Use &:not pseudo class again to target all paragraphs except the last-child.
+*/
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
 /*
     Inline blocks are treated like text.
     They can be centered by setting text-align: center on their parent.
@@ -178,8 +192,18 @@ body {
 /*
    Using utility classes for margins helps keep components reusable.
    Adding margins to component styles influences their usage in other contexts. 
+   Better to name utility classes so that they're free from implementation details,
+   i.e u-margin-bottom-8 becomes u-margin-bottom-big, so that they 8px isn't hardcoded in the name.
+   This also provides flexibility if the margin needs to change,
+   i.e if the 8px margin bottom needed to become 7px, would we rename to u-margin-bottom-7?
 */
-.u-margin-bottom-8 {
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
   margin-bottom: 8rem; }
 
 .btn {
@@ -255,6 +279,30 @@ body {
     animation: moveInBottom .5s ease-out .75s;
     /* Apply the styles of the 0% frame before the animation starts. */
     animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #7ed56f;
+  display: inline-block;
+  text-decoration: none;
+  /*
+            Can use pixel values here as 1px & 3px are small enough values as to not
+            be significantly affected if the user changes the base font-size.
+            For 1px to become 2px the user would have to scale up to a base font-size of 32px.
+        */
+  border-bottom: 1px solid #7ed56f;
+  padding: 3px;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #7ed56f;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
 
 /*
     Row will have a height of 0 because all child elements are floated.

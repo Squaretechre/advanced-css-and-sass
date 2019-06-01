@@ -48,6 +48,14 @@
             <img src="" alt="" class="composition__photo composition__photo--p1">
             <img src="" alt="" class="composition__photo composition__photo--p1">
         </div>
+
+        .row>.col-1-of-4>.feature-box =
+                   <div class="row">
+               <div class="col-1-of-4">
+                   <div class="feature-box"></div>
+               </div>
+           </div>
+       </section>
         
         Notes:
         - Tabbing after element generated cycles through attributes
@@ -87,13 +95,59 @@
                         <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                         <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
                         <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
-
-
-                        
                     </div>
                 </div>
             </div>
        </section> 
+
+       <section class="section-features">
+           <!--
+                The i element was previously used to make text italic.
+                It's now used for icons.
+            -->
+            
+            <div class="row">
+                <!--
+                    Don't modify the grid itself, house components in the grid.
+                -->
+                <div class="col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box__icon icon-basic-world"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Explore the world</h3>
+                        <p class="feature-box__text">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate itaque quas.
+                        </p>
+                   </div>
+               </div>
+               <div class="col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box__icon icon-basic-compass"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Meet nature</h3>
+                        <p class="feature-box__text">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate itaque quas.
+                        </p>
+                   </div>
+               </div>
+               <div class="col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box__icon icon-basic-map"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Find your way</h3>
+                        <p class="feature-box__text">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate itaque quas.
+                        </p>
+                   </div>
+               </div>
+               <div class="col-1-of-4">
+                    <div class="feature-box">
+                        <i class="feature-box__icon icon-basic-heart"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Live a heathier life</h3>
+                        <p class="feature-box__text">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate itaque quas.
+                        </p>
+                   </div>
+               </div>
+           </div>
+       </section>
     </main>
 
     <!--

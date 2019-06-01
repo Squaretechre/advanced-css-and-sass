@@ -352,6 +352,24 @@ body {
       box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
       z-index: 20; }
 
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform .3s; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #55c57a, #28b485);
+    -webkit-background-clip: text;
+    color: transparent; }
+
 /*
     Row will have a height of 0 because all child elements are floated.
     Use clearfix to sort this.
@@ -451,3 +469,13 @@ body {
     */
   margin-top: -20vh;
   background-color: #f7f7f7; }
+
+.section-features {
+  padding: 20rem 0;
+  margin-top: -10rem;
+  background-size: cover;
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  transform: skewY(-7deg);
+  /* Select everything that is a direct child of section-features. */ }
+  .section-features > * {
+    transform: skewY(7deg); }

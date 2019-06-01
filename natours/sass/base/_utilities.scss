@@ -1,0 +1,15 @@
+/*
+    Inline blocks are treated like text.
+    They can be centered by setting text-align: center on their parent.
+*/
+.u-center-text {
+    text-align: center;
+}
+
+/*
+   Using utility classes for margins helps keep components reusable.
+   Adding margins to component styles influences their usage in other contexts. 
+*/
+.u-margin-bottom-8 {
+    margin-bottom: 8rem;    
+}

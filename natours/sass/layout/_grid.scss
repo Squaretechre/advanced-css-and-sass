@@ -9,7 +9,6 @@
         If not, the view port < 1140px, then fill 100% of space that it has.
     */ 
     max-width: $grid-width;
-    background-color: #eee;
 
     /*
         Center a block element inside of another block element.
@@ -31,7 +30,6 @@
         *   = contains.
     */
     [class^="col-"] {
-        background-color: orangered;
         float: left;
         
         &:not(:last-child) {

@@ -152,6 +152,36 @@ body {
     /* Animation shorthand. */
     animation: moveInRight 1s ease-out; }
 
+.heading-secondary {
+  display: inline-block;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  background-image: linear-gradient(to right, #55c57a, #28b485);
+  /* Background will be clipped exactly where the text is. */
+  -webkit-background-clip: text;
+  /* Set text color to transparent so that the background image is revealed. */
+  color: transparent;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+/*
+    Inline blocks are treated like text.
+    They can be centered by setting text-align: center on their parent.
+*/
+.u-center-text {
+  text-align: center; }
+
+/*
+   Using utility classes for margins helps keep components reusable.
+   Adding margins to component styles influences their usage in other contexts. 
+*/
+.u-margin-bottom-8 {
+  margin-bottom: 8rem; }
+
 .btn {
   /*
         Pseudo classes are special states of a selector.
@@ -237,7 +267,6 @@ body {
         If not, the view port < 1140px, then fill 100% of space that it has.
     */
   max-width: 114rem;
-  background-color: #eee;
   /*
         Center a block element inside of another block element.
         CSS calculates same left & right margin when set to auto.
@@ -258,7 +287,6 @@ body {
     display: table;
     clear: both; }
   .row [class^="col-"] {
-    background-color: orangered;
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
@@ -298,7 +326,7 @@ body {
         Specify a polygon through which the image will still be visible.
         The polygon function takes coordinates (X, Y) or path to clip.
     */
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative; }
   .header__logo-box {
     /* Absolute positioned elements will be positioned relative to their parent element with position set to relative. */
@@ -316,3 +344,14 @@ body {
     /* Translate is in relation to the element, not header, the parent */
     transform: translate(-50%, -50%);
     text-align: center; }
+
+.section-about {
+  padding: 25rem 0;
+  /*
+        Give section-about a negative top margin so that it moves up.
+        -20vh is the difference between the height of the header (95vh)
+        and where the bottom left corner of the wedge clipped out of it
+        stops (75vh).
+    */
+  margin-top: -20vh;
+  background-color: #f7f7f7; }

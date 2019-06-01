@@ -1,0 +1,12 @@
+.section-about {
+    padding: 25rem 0;
+    
+    /*
+        Give section-about a negative top margin so that it moves up.
+        -20vh is the difference between the height of the header (95vh)
+        and where the bottom left corner of the wedge clipped out of it
+        stops (75vh).
+    */
+    margin-top: -20vh;
+    background-color: $color-grey-light;
+}

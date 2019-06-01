@@ -1,0 +1,64 @@
+.composition {
+    position: relative;
+
+    /*
+        When the composition is hovered, then select the photo which isn't hovered.
+    */
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+
+    }
+
+    /*
+        Flexible images:
+        Always define image widths with percentages if possible.
+        Enables images to scale nicely with the viewport.
+    */
+    &__photo {
+        position: absolute;
+        width: 55%; 
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+
+        /*
+            Specify 2rem of space between the photo and the outline.
+        */
+        outline-offset: 2rem;
+        
+        /*
+            Pop to foreground effect:
+            - Set z-index on element selector
+            - Set higher z-index on the hover state
+            - Add transition on all properties for smoother effect
+        */
+        z-index: 10;
+        transition: all .2s;
+
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            /*
+                Outline is different to border in that you can specify an outline-offset.
+                This creates space between the element and the outline.
+            */
+            outline: 1.5rem solid $color-primary;
+            
+            transform: scale(1.05) translateY(-1.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+        }
+    }
+}

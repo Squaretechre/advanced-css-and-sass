@@ -206,6 +206,12 @@ body {
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
 
+.u-margin-top-big {
+  margin-top: 8rem; }
+
+.u-margin-top-huge {
+  margin-top: 10rem; }
+
 .btn {
   /*
         Pseudo classes are special states of a selector.
@@ -274,6 +280,11 @@ body {
     color: #777; }
     .btn--white::after {
       background-color: #fff; }
+  .btn--green {
+    background-color: #7ed56f;
+    color: #fff; }
+    .btn--green::after {
+      background-color: #7ed56f; }
   .btn--animated {
     /* animation name, duration, timing function, delay. */
     animation: moveInBottom .5s ease-out .75s;
@@ -370,6 +381,128 @@ body {
     -webkit-background-clip: text;
     color: transparent; }
 
+.card {
+  position: relative;
+  /*
+        Perspective:
+        - Must be on the parent element.
+        - The lower the value, the more dramatic the effect.
+    */
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  height: 52rem;
+  /*
+        Not an element or modifier of heading, so heading-span is its own element in BEM.
+    */ }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0); }
+  .card__side {
+    /*
+            Absolute positioned elements fit to the width of their content.
+        */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /*
+            Need to set overflow: hidden due to background-image overflowing the card and hiding the border-radius.
+        */
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    /*
+            Hide the background of a transformed element during animation.
+        */
+    backface-visibility: hidden;
+    font-size: 2rem;
+    height: 52rem;
+    transition: all .8s ease; }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back-2 {
+        background-image: linear-gradient(to right bottom, #55c57a, #28b485); }
+      .card__side--back-3 {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+  .card__picture {
+    background-size: cover;
+    height: 23rem;
+    /*
+            Compatibility (clip-path):
+            Doesn't work in IE or Edge.
+        */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    /*
+            Compatibility (background-blend-mode):
+            Doesn't work in IE or Edge.
+        */
+    background-blend-mode: screen; }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/nat-5.jpg); }
+    .card__picture--2 {
+      background-image: linear-gradient(to right bottom, #55c57a, #28b485), url(../img/nat-6.jpg); }
+    .card__picture--3 {
+      background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../img/nat-7.jpg); }
+  .card__heading {
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    color: #fff; }
+  .card__heading-span {
+    padding: 1rem 1.5rem;
+    /*
+            Treat element that has wrapped as separate elements with same styles.
+        */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+    .card__heading-span--2 {
+      background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.85), rgba(40, 180, 133, 0.85)); }
+    .card__heading-span--3 {
+      background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      width: 80%;
+      margin: 0 auto;
+      list-style: none; }
+      .card__details ul li {
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.5rem; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
+  .card__cta {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+  .card__price-box {
+    margin-bottom: 8rem;
+    color: #fff; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
+
 /*
     Row will have a height of 0 because all child elements are floated.
     Use clearfix to sort this.
@@ -440,6 +573,7 @@ body {
         Specify a polygon through which the image will still be visible.
         The polygon function takes coordinates (X, Y) or path to clip.
     */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative; }
   .header__logo-box {
@@ -479,3 +613,8 @@ body {
   /* Select everything that is a direct child of section-features. */ }
   .section-features > * {
     transform: skewY(7deg); }
+
+.section-tours {
+  padding: 25rem 0 15rem 0;
+  margin-top: -10rem;
+  background-color: #f7f7f7; }

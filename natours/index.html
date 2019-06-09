@@ -71,26 +71,29 @@
     -->
     <!-- Tell search engines and screen readers this is the main part of the site -->
     <main>
-       <section class="section-about">
-           <!-- 
+        <section class="section-about">
+            <!-- 
                Use a utility class to centre the heading.
                Utility classes are simple classes that have 1 goal.
                Handy for parent elements that only serve to house a child such a text.
             -->
-           <div class="u-center-text u-margin-bottom-big">
-               <h2 class="heading-secondary">
-                   Exciting tours for adventurous people
-               </h2>
-           </div>
-           <div class="row">
+            <div class="u-center-text u-margin-bottom-big">
+                <h2 class="heading-secondary">
+                    Exciting tours for adventurous people
+                </h2>
+            </div>
+            <div class="row">
                 <div class="col-1-of-2">
                     <h3 class="heading-tertiary u-margin-bottom-small">You're going to fall in love with nature</h3>
                     <p class="paragraph">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo repudiandae iusto unde maiores enim asperiores dolore eaque aliquam officiis quae laboriosam vitae, quasi, pariatur accusantium necessitatibus eos a consectetur odit.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo repudiandae iusto unde
+                        maiores enim asperiores dolore eaque aliquam officiis quae laboriosam vitae, quasi, pariatur
+                        accusantium necessitatibus eos a consectetur odit.
                     </p>
                     <h3 class="heading-tertiary u-margin-bottom-small">Live adventures like you never have before</h3>
                     <p class="paragraph">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, maiores architecto. Aspernatur blanditiis necessitatibus provident aliquid.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, maiores architecto. Aspernatur
+                        blanditiis necessitatibus provident aliquid.
                     </p>
 
                     <!-- 
@@ -107,11 +110,11 @@
                     </div>
                 </div>
             </div>
-       </section> 
+        </section>
 
-       <section class="section-features">
-           <div class="row">
-               <!--
+        <section class="section-features">
+            <div class="row">
+                <!--
                    Don't modify the grid itself, house components in the grid.
                 -->
                 <div class="col-1-of-4">
@@ -125,39 +128,39 @@
                         <p class="feature-box__text">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate itaque quas.
                         </p>
-                   </div>
-               </div>
-               <div class="col-1-of-4">
+                    </div>
+                </div>
+                <div class="col-1-of-4">
                     <div class="feature-box">
                         <i class="feature-box__icon icon-basic-compass"></i>
                         <h3 class="heading-tertiary u-margin-bottom-small">Meet nature</h3>
                         <p class="feature-box__text">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate itaque quas.
                         </p>
-                   </div>
-               </div>
-               <div class="col-1-of-4">
+                    </div>
+                </div>
+                <div class="col-1-of-4">
                     <div class="feature-box">
                         <i class="feature-box__icon icon-basic-map"></i>
                         <h3 class="heading-tertiary u-margin-bottom-small">Find your way</h3>
                         <p class="feature-box__text">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate itaque quas.
                         </p>
-                   </div>
-               </div>
-               <div class="col-1-of-4">
+                    </div>
+                </div>
+                <div class="col-1-of-4">
                     <div class="feature-box">
                         <i class="feature-box__icon icon-basic-heart"></i>
                         <h3 class="heading-tertiary u-margin-bottom-small">Live a heathier life</h3>
                         <p class="feature-box__text">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate itaque quas.
                         </p>
-                   </div>
-               </div>
-           </div>
-       </section>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-       <section class="section-tours">
+        <section class="section-tours">
             <div class="u-center-text u-margin-bottom-big">
                 <h2 class="heading-secondary">
                     Most popular tours
@@ -270,7 +273,81 @@
             <div class="u-center-text u-margin-top-huge">
                 <a href="#" class="btn btn--green">Discover all tours</a>
             </div>
-       </section>
+        </section>
+
+        <section class="section-stories">
+            <!--
+                coverr.co for free videos in mp4 and webm format.
+                mp4/webm ensures video works across all modern browsers.
+                    - Won't work in IE 8/9
+            -->
+            <div class="background-video">
+                <!--
+                    HTML video element, need to specify commands to auto play and loop.
+                -->
+                <video class="background-video__content" autoplay muted loop>
+                    <source src="img/video.mp4" type="video/mp4">
+                    <source src="img/video.webm" type="video/webm">
+                    <!-- Default text to show if video not supported by the browser. -->
+                    Your browser is not supported!
+                </video>
+            </div>
+
+            <div class="u-center-text u-margin-bottom-big">
+                <h2 class="heading-secondary">
+                    We make people genuinely happy
+                </h2>
+            </div>
+            <div class="row">
+                <div class="story">
+                    <!--
+                       Semantics:
+                       - Use figure when using image together with a caption.
+                   -->
+                    <figure class="story__shape">
+                        <img class="story__image" src="img/nat-8.jpg" alt="Person on a tour">
+                        <figcaption class="story__caption">
+                            Mary Smith
+                        </figcaption>
+                    </figure>
+                    <div class="story__text">
+                        <h3 class="heading-tertiary u-margin-bottom-small">I had the best week ever with my family</h3>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum culpa illo ex autem
+                            neque voluptatem, ratione alias, nulla nisi hic praesentium, magni quod perferendis adipisci
+                            commodi possimus tenetur dolor provident. Lorem, ipsum dolor sit amet consectetur
+                            adipisicing elit. Dolore reiciendis voluptatibus.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="story">
+                    <!--
+                           Semantics:
+                           - Use figure when using image together with a caption.
+                       -->
+                    <figure class="story__shape">
+                        <img class="story__image" src="img/nat-9.jpg" alt="Person on a tour">
+                        <figcaption class="story__caption">
+                            Jack Wilson
+                        </figcaption>
+                    </figure>
+                    <div class="story__text">
+                        <h3 class="heading-tertiary u-margin-bottom-small">WOW! My life is completely different now</h3>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum culpa illo ex autem
+                            neque voluptatem, ratione alias, nulla nisi hic praesentium, magni quod perferendis adipisci
+                            commodi possimus tenetur dolor provident. Lorem, ipsum dolor sit amet consectetur
+                            adipisicing elit. Dolore reiciendis voluptatibus.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="u-center-text u-margin-top-huge">
+                <a href="#" class="btn-text">Read all stories &rarr;</a>
+            </div>
+        </section>
     </main>
 
     <!--
@@ -344,4 +421,5 @@
     </section>
     -->
 </body>
+
 </html>

@@ -503,6 +503,95 @@ body {
     font-size: 6rem;
     font-weight: 100; }
 
+.story {
+  width: 75%;
+  /* Centering a block element within a block element. */
+  margin: 0 auto;
+  padding: 6rem;
+  padding-left: 9rem;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  /*
+        Use rgba with alpha value to have a translucent background.
+    */
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  font-size: 1.6rem;
+  transform: skewX(-12deg); }
+  .story:hover .story__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%); }
+  .story:hover .story__image {
+    transform: translateX(-4rem) scale(1);
+    /*
+            Various filters available, filter: hue-rotate(50deg). 
+        */
+    filter: blur(3px) brightness(80%); }
+  .story__shape {
+    position: relative;
+    float: left;
+    width: 15rem;
+    height: 15rem;
+    /*
+            As of 2017:
+            - Worked in Chrome.
+            - Only worked in Safari with -webkit prefix.
+            - Didn't work in Firefox or Edge.
+        */
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    /*
+            Use shape-outside to define how content flows around an element.
+            Use shape-outside with a vectorized shape, like clip-path.
+            circle(radius at centre of circle).
+
+            shape-outside requires a floated element with defined dimensions.
+        */
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    /*
+            Transforms are the best way to move a floated element.
+        */
+    transform: translateX(-3rem) skewX(12deg); }
+  .story__image {
+    /* The image is wider than it is tall, so use height: 100% */
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    transition: all .5s; }
+  .story__text {
+    transform: skewX(12deg); }
+  .story__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s;
+    backface-visibility: hidden; }
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .15;
+  overflow: hidden; }
+  .background-video__content {
+    height: 100%;
+    width: 100%;
+    /*
+            Using object-fit: cover; will fill the entire parent while still 
+            maintaining the aspect ratio of image.
+            Anything remaining will be clipped off.
+            Can also use object-fit: fill; which does not maintain the aspect ratio.
+        */
+    object-fit: cover; }
+
 /*
     Row will have a height of 0 because all child elements are floated.
     Use clearfix to sort this.
@@ -618,3 +707,7 @@ body {
   padding: 25rem 0 15rem 0;
   margin-top: -10rem;
   background-color: #f7f7f7; }
+
+.section-stories {
+  position: relative;
+  padding: 15rem 0; }

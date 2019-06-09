@@ -1,0 +1,89 @@
+.story {
+    width: 75%;
+
+    /* Centering a block element within a block element. */
+    margin: 0 auto;
+    padding: 6rem;
+    padding-left: 9rem;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+
+    /*
+        Use rgba with alpha value to have a translucent background.
+    */
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__image {
+        transform: translateX(-4rem) scale(1);
+
+        /*
+            Various filters available, filter: hue-rotate(50deg). 
+        */
+        filter: blur(3px) brightness(80%);
+    }
+    
+    &__shape {
+        position: relative;
+        float: left;
+        width: 15rem;
+        height: 15rem;
+
+        /*
+            As of 2017:
+            - Worked in Chrome.
+            - Only worked in Safari with -webkit prefix.
+            - Didn't work in Firefox or Edge.
+        */
+        -webkit-shape-outside: circle(50% at 50% 50%);
+
+        /*
+            Use shape-outside to define how content flows around an element.
+            Use shape-outside with a vectorized shape, like clip-path.
+            circle(radius at centre of circle).
+
+            shape-outside requires a floated element with defined dimensions.
+        */
+        shape-outside: circle(50% at 50% 50%);
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        
+        /*
+            Transforms are the best way to move a floated element.
+        */
+        transform: translateX(-3rem) skewX(12deg);
+
+    }
+
+    &__image {
+        /* The image is wider than it is tall, so use height: 100% */
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+}

@@ -4,6 +4,10 @@
         They're used to style elements under a special condition.
         :link is a state of the btn selector.
     */
+    /*
+        Using just the '&' symbol will translate to .btn, apply styles to .btn and :link / :visited.
+    */
+    &,
     &:link,
     &:visited {
         position: relative;
@@ -29,6 +33,10 @@
         */
         transition: all .2s;
         font-size: $default-font-size;
+
+        /* Button elements come with a border by default. */
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -45,7 +53,9 @@
     }
 
     /* When clicked. */
-    &:active {
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(-.1rem);
 
         /*

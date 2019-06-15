@@ -39,3 +39,42 @@
     position: relative; 
     padding: 15rem 0;
 }
+
+.section-book {
+    padding: 15rem 0;
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+.book {
+    height: 50rem;
+
+    /*
+        Possible to use degrees with linear-gradient.
+        Solid color gradient is an alternative technique to clip-path.
+            - Not always possible to do, sometimes clip-path is neccessary.
+        - 0-50% use one color for the gradient.
+        - Provide another color also at 50% resulting in a solid color.
+            - Use transparent to give the clipping effect.
+            - Use 0-40% for a blurred edge effect. 
+    */
+    background-image: linear-gradient(
+            105deg,
+            rgba($color-white, .9) 0%,
+            rgba($color-white, .9) 50%,
+            transparent 50%
+        ),
+        url(../img/nat-10.jpg);
+
+    /* 
+        cover - apply background image to whole container where it's applied.
+        100% would also work here.
+    */
+    background-size: cover;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+
+    &__form {
+        width: 50%;
+        padding: 6rem;
+    }
+}

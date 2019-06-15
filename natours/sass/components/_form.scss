@@ -1,0 +1,145 @@
+.form {
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    /*
+        Form inputs don't automatically inherit the color or font-family for a page, must do this explicitly.
+    */
+    &__input {
+        display: block;
+        width: 90%;
+        /*
+            Aesthetics:
+            Give buttons and form elements a little extra padding on the sides.
+        */
+        padding: 1.5rem 2rem;
+        border: none;
+        border-radius: 2px;
+        color: inherit;
+        font-family: inherit;
+        font-size: 1.5rem;
+        background-color: rgba($color-white, .5);
+        transition: all .3s;
+
+        /*
+            Set border that is used in the focused state on the initial state also but transparent,
+            this stops elements jumping when the 3px border-bottom is added.
+        */
+        border-bottom: 3px solid transparent;
+
+        &:focus {
+            /*
+                Accessibility:
+                The focus state is needed for people who navigate the page using a keyboard.
+                - Never just set focus to none, leaving no indication that the element is focused.
+                - Always make the form elements that are focused visible.
+            */
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary;
+        }
+
+        /*
+            Validity pseudo-selectors:
+            Target HTML5 invalid state on focus.
+        */
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+
+        /*
+            Only available in Chrome and Safari as of 2017.
+        */
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+    }
+
+    &__label {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        transition: all .3s;
+        transform: translateY(-8rem);
+    }
+
+    /*
+        :placeholder-shown = state when nothing in the input field.
+
+        + = Adjacent sibling selector.
+            - Select the element that comes immediately after other selected element.
+            - When using the sibling selector, the ordering of elements is important. Sibling must come after the first element being selected.
+        ~ = General sibling selector.
+            - Select any element that is a sibling of the selected element.
+    */
+    &__input:placeholder-shown + &__label {
+        /*
+            - Using opacity: 0, the element will still be on the page but invisible.
+            - Opacity can be animated.
+        */
+        opacity: 0;
+
+        /*
+            - Using visibility: hidden, the element will still affect layout but won't be visible.
+            - Visibility can't be animated.
+        */
+        visibility: hidden;
+
+        /*
+            Move hidden input label to line up input text when the placeholder is shown.
+        */
+        transform: translateY(-4rem);
+    }
+
+    &__radio-group {
+        display: inline-block;
+        width: 49%;
+    }
+
+    &__radio-input {
+        display: none;
+    }
+
+    &__radio-label {
+        position: relative;
+        padding-left: 4.5rem;
+        font-size: $default-font-size;
+        cursor: pointer;
+    }
+
+    &__radio-button {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -.4rem;
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 1.3rem;
+            width: 1.3rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%; 
+            background-color: $color-primary;
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+
+    /*
+        Use the :checked pseudo class of the input to target radio-button::after.
+    */
+    &__radio-input:checked ~ &__radio-label &__radio-button::after {
+        opacity: 1;
+    }
+}

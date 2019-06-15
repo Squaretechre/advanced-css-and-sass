@@ -196,21 +196,23 @@ body {
    i.e u-margin-bottom-8 becomes u-margin-bottom-big, so that they 8px isn't hardcoded in the name.
    This also provides flexibility if the margin needs to change,
    i.e if the 8px margin bottom needed to become 7px, would we rename to u-margin-bottom-7?
+
+   Ok to use !important in utility classes as utilities should override everything else when applied.
 */
 .u-margin-bottom-small {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem !important; }
 
 .u-margin-bottom-medium {
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem !important; }
 
 .u-margin-bottom-big {
-  margin-bottom: 8rem; }
+  margin-bottom: 8rem !important; }
 
 .u-margin-top-big {
-  margin-top: 8rem; }
+  margin-top: 8rem !important; }
 
 .u-margin-top-huge {
-  margin-top: 10rem; }
+  margin-top: 10rem !important; }
 
 .btn {
   /*
@@ -218,12 +220,15 @@ body {
         They're used to style elements under a special condition.
         :link is a state of the btn selector.
     */
+  /*
+        Using just the '&' symbol will translate to .btn, apply styles to .btn and :link / :visited.
+    */
   /* When clicked. */
   /*
     :after pseudo element adds a virtual element right after element which can be styled.
     The :after pseudo element will be treated like a child of btn.
     */ }
-  .btn:link, .btn:visited {
+  .btn, .btn:link, .btn:visited {
     position: relative;
     text-transform: uppercase;
     text-decoration: none;
@@ -243,7 +248,10 @@ body {
             :hover and :active state transforms will be animated in relation to the element's initial state.
         */
     transition: all .2s;
-    font-size: 1.6rem; }
+    font-size: 1.6rem;
+    /* Button elements come with a border by default. */
+    border: none;
+    cursor: pointer; }
   .btn:hover {
     transform: translateY(-0.3rem);
     /* X, Y, blur, color. */
@@ -252,7 +260,8 @@ body {
     .btn:hover::after {
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0; }
-  .btn:active {
+  .btn:active, .btn:focus {
+    outline: none;
     transform: translateY(-0.1rem);
     /*
             X, Y, blur, color.
@@ -592,6 +601,123 @@ body {
         */
     object-fit: cover; }
 
+.form {
+  /*
+        Form inputs don't automatically inherit the color or font-family for a page, must do this explicitly.
+    */
+  /*
+        :placeholder-shown = state when nothing in the input field.
+
+        + = Adjacent sibling selector.
+            - Select the element that comes immediately after other selected element.
+            - When using the sibling selector, the ordering of elements is important. Sibling must come after the first element being selected.
+        ~ = General sibling selector.
+            - Select any element that is a sibling of the selected element.
+    */
+  /*
+        Use the :checked pseudo class of the input to target radio-button::after.
+    */ }
+  .form__group:not(:last-child) {
+    margin-bottom: 2rem; }
+  .form__input {
+    display: block;
+    width: 90%;
+    /*
+            Aesthetics:
+            Give buttons and form elements a little extra padding on the sides.
+        */
+    padding: 1.5rem 2rem;
+    border: none;
+    border-radius: 2px;
+    color: inherit;
+    font-family: inherit;
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all .3s;
+    /*
+            Set border that is used in the focused state on the initial state also but transparent,
+            this stops elements jumping when the 3px border-bottom is added.
+        */
+    border-bottom: 3px solid transparent;
+    /*
+            Validity pseudo-selectors:
+            Target HTML5 invalid state on focus.
+        */
+    /*
+            Only available in Chrome and Safari as of 2017.
+        */ }
+    .form__input:focus {
+      /*
+                Accessibility:
+                The focus state is needed for people who navigate the page using a keyboard.
+                - Never just set focus to none, leaving no indication that the element is focused.
+                - Always make the form elements that are focused visible.
+            */
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+      border-bottom: 3px solid #7ed56f; }
+    .form__input:focus:invalid {
+      border-bottom: 3px solid #ff7730; }
+    .form__input::-webkit-input-placeholder {
+      color: #999; }
+  .form__label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    transition: all .3s;
+    transform: translateY(-8rem); }
+  .form__input:placeholder-shown + .form__label {
+    /*
+            - Using opacity: 0, the element will still be on the page but invisible.
+            - Opacity can be animated.
+        */
+    opacity: 0;
+    /*
+            - Using visibility: hidden, the element will still affect layout but won't be visible.
+            - Visibility can't be animated.
+        */
+    visibility: hidden;
+    /*
+            Move hidden input label to line up input text when the placeholder is shown.
+        */
+    transform: translateY(-4rem); }
+  .form__radio-group {
+    display: inline-block;
+    width: 49%; }
+  .form__radio-input {
+    display: none; }
+  .form__radio-label {
+    position: relative;
+    padding-left: 4.5rem;
+    font-size: 1.6rem;
+    cursor: pointer; }
+  .form__radio-button {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -.4rem;
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid #7ed56f;
+    border-radius: 50%; }
+    .form__radio-button::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1.3rem;
+      width: 1.3rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background-color: #7ed56f;
+      opacity: 0;
+      transition: opacity .2s; }
+  .form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+    opacity: 1; }
+
 /*
     Row will have a height of 0 because all child elements are floated.
     Use clearfix to sort this.
@@ -711,3 +837,30 @@ body {
 .section-stories {
   position: relative;
   padding: 15rem 0; }
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, #55c57a, #28b485); }
+
+.book {
+  height: 50rem;
+  /*
+        Possible to use degrees with linear-gradient.
+        Solid color gradient is an alternative technique to clip-path.
+            - Not always possible to do, sometimes clip-path is neccessary.
+        - 0-50% use one color for the gradient.
+        - Provide another color also at 50% resulting in a solid color.
+            - Use transparent to give the clipping effect.
+            - Use 0-40% for a blurred edge effect. 
+    */
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../img/nat-10.jpg);
+  /* 
+        cover - apply background image to whole container where it's applied.
+        100% would also work here.
+    */
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
+  .book__form {
+    width: 50%;
+    padding: 6rem; }
